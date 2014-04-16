@@ -5,9 +5,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.demis.familh</groupId>
     <artifactId>webapp</artifactId>
     <packaging>war</packaging>
+
+    <properties>
+        <jackson.mapper.version>1.9.13</jackson.mapper.version>
+        <jackson.databind.version>2.3.3</jackson.databind.version>
+    </properties>
 
     <parent>
         <groupId>org.demis.familh</groupId>
@@ -15,4 +19,28 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.demis.familh</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.mapper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>familh</finalName>
+    </build>
 </project>

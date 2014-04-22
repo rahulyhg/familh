@@ -1,6 +1,11 @@
 package org.demis.familh.model;
 
-public class FamilyTree {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "family_tree")
+public class FamilyTree implements Serializable {
 
 
     private int id;
@@ -17,6 +22,10 @@ public class FamilyTree {
                 '}';
     }
 
+    @Id
+    @Column(name = "family_tree_id", precision = 10)
+    @SequenceGenerator(name="FamilyTreeSequence",sequenceName="family_tree_sequence")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="FamilyTreeSequence")
     public int getId() {
         return id;
     }
@@ -25,6 +34,7 @@ public class FamilyTree {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false, unique = false, length = 255)
     public String getName() {
         return name;
     }

@@ -3,6 +3,7 @@ package org.demis.familh.spring.config;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.ResourceServlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,7 +16,6 @@ public class FamilyApplicationInitializer implements WebApplicationInitializer {
 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(Config.class);
-
         ctx.setServletContext(servletContext);
 
         Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));

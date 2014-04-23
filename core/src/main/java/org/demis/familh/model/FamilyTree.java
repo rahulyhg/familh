@@ -10,16 +10,10 @@ public class FamilyTree implements Serializable {
 
     private int id;
     private String name;
+    private java.sql.Timestamp creationDate = null;
+    private java.sql.Timestamp modificationDate = null;
 
     public FamilyTree() {
-    }
-
-    @Override
-    public String toString() {
-        return "FamilyTree{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 
     @Id
@@ -42,4 +36,30 @@ public class FamilyTree implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Column(name = "creation_date", nullable = true, unique = false, length = 29)
+    public java.sql.Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(java.sql.Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
+    @Column(name = "modification_date", nullable = true, unique = false, length = 29)
+    public java.sql.Timestamp getModificationDate() {
+        return modificationDate;
+    }
+
+    public void setModificationDate(java.sql.Timestamp modificationDate) {
+        this.modificationDate = modificationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "FamilyTree{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 }

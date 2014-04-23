@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -69,4 +71,21 @@ public class Config {
         return entityManagerFactoryBean;
     }
 
+    @Bean
+    public UrlBasedViewResolver setupViewResolver() {
+        UrlBasedViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/page/");
+        resolver.setSuffix(".html");
+        return resolver;
+    }
+
+/*
+    @Bean (name = "viewResolver")
+    public ViewResolver viewResolver() throws ClassNotFoundException {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/page/");
+        viewResolver.setSuffix(".html");
+        return viewResolver;
+    }
+*/
 }

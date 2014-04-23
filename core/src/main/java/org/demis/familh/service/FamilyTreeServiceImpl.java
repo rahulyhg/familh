@@ -4,6 +4,7 @@ import org.demis.familh.model.FamilyTree;
 import org.demis.familh.repository.FamilyTreeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +29,7 @@ public class FamilyTreeServiceImpl implements FamilyTreeService {
     @Transactional
     @Override
     public FamilyTreePage getPage(int pageNumber, int size) {
-        Page<FamilyTree> all = familyTreeRepository.findAll(new PageRequest(pageNumber, size));
+        Page<FamilyTree> all = familyTreeRepository.findAll(new PageRequest(pageNumber, size, new Sort(Sort.Direction.ASC, "id")));
         FamilyTreePage page = new FamilyTreePage();
         page.setSize(all.getSize());
         page.setTotalElements(all.getTotalElements());
